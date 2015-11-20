@@ -1,2 +1,2 @@
 # cookbook-cida-auth
-Recipes for liquibase provisioning and tomcat application stack
+Assumes a postgres database for now.

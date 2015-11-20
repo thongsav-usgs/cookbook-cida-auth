@@ -1,0 +1,19 @@
+{
+	"name": "cida_auth",
+	"override_attributes": {
+		"cida_auth" : {
+			"cida_auth_version" : "1.0.3",
+			"schema_name" : "public",
+			"db_connection" : "jdbc:postgresql://host:5432/postgres",
+			"credentials_data_bag_name" : "example_credentials_data_bag",
+			"data_bag_encryption_key" : "/etc/chef/data-bag-encryption-key",
+			"data_bag_username_field" : "database.username",
+			"data_bag_password_field" : "database.password",
+			"data_bag_manager_username_field" : "auth.manager.username",
+			"data_bag_manager_password_field" : "auth.manager.password"
+		}
+	},
+	"json_class": "Chef::Environment",
+	"description": "CIDA Auth Dev settings",
+	"chef_type": "environment"
+}

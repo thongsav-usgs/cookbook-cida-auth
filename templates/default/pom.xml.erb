@@ -1,0 +1,102 @@
+<?xml version="1.0"?>
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+	<modelVersion>4.0.0</modelVersion>
+	<groupId>gov.usgs.cida</groupId>
+	<artifactId>generic-liquibase-runner</artifactId>
+	<version>1.0.0-SNAPSHOT</version>
+	<packaging>pom</packaging>
+	<properties>
+		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+		<unpacked-liquibase-artifact-dir>unpacked</unpacked-liquibase-artifact-dir>
+	</properties>
+	<repositories>
+		<repository>
+			<id>nexus</id>
+			<name>CIDA Nexus</name>
+			<url>http://internal.cida.usgs.gov/maven/content/groups/public/</url>
+			<snapshots>
+				<enabled>true</enabled>
+				<updatePolicy>always</updatePolicy>
+			</snapshots>
+			<releases>
+				<enabled>true</enabled>
+				<updatePolicy>always</updatePolicy>
+			</releases>
+		</repository>
+		<repository>
+			<id>public-nexus</id>
+			<name>CIDA Public Nexus</name>
+			<url>http://cida.usgs.gov/maven/cida-public/</url>
+			<snapshots>
+				<enabled>true</enabled>
+				<updatePolicy>always</updatePolicy>
+			</snapshots>
+			<releases>
+				<enabled>true</enabled>
+				<updatePolicy>always</updatePolicy>
+			</releases>
+		</repository>
+	</repositories>
+	<dependencies>
+		<dependency>
+			<groupId>gov.usgs.cida.auth</groupId>
+			<artifactId>auth-database</artifactId>
+			<type>jar</type>
+			<version><%= @cida_auth_version %></version>
+		</dependency>
+		<dependency>
+			<groupId>org.postgresql</groupId>
+			<artifactId>postgresql</artifactId>
+			<version>9.4-1205-jdbc41</version>
+		</dependency>
+	</dependencies>
+	<build>
+		<plugins>
+			<plugin>
+				<groupId>org.apache.maven.plugins</groupId>
+				<artifactId>maven-dependency-plugin</artifactId>
+				<version>2.8</version>
+				<configuration>
+					<artifactItems>
+						<artifactItem>
+							<groupId>gov.usgs.cida.auth</groupId>
+							<artifactId>auth-database</artifactId>
+							<version>${cida-auth-db-version}</version>
+							<type>jar</type>
+							<overWrite>true</overWrite>
+							<outputDirectory>${unpacked-liquibase-artifact-dir}</outputDirectory>
+						</artifactItem>
+					</artifactItems>
+				</configuration>
+			</plugin>
+			<plugin>
+				<groupId>org.liquibase</groupId>
+				<artifactId>liquibase-maven-plugin</artifactId>
+				<version>3.0.7</version>
+				<configuration>
+					<promptOnNonLocalDatabase>false</promptOnNonLocalDatabase>
+					<changeLogFile>${unpacked-liquibase-artifact-dir}/liquibase/changelog/changelog.xml</changeLogFile>
+					<driver>org.postgresql.Driver</driver>
+					<url><%= @db_connection %></url>
+					<username><%= @db_username %></username>
+					<password><%= @db_password %></password>
+					<expressionVars>
+						<property>
+							<name>db.auth.schemaname</name>
+							<value><%= @schema_name %></value>
+						</property>
+						<property>
+							<name>db.auth.user</name>
+							<value><%= @db_username %></value>
+						</property>
+						<property>
+							<name>runasusername</name>
+							<value><%= @db_password %></value>
+						</property>
+					</expressionVars>	
+				</configuration>
+			</plugin>
+		</plugins>
+	</build>
+</project>
