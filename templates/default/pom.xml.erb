@@ -46,9 +46,9 @@
 			<version><%= @cida_auth_version %></version>
 		</dependency>
 		<dependency>
-			<groupId>org.postgresql</groupId>
-			<artifactId>postgresql</artifactId>
-			<version>9.4-1205-jdbc41</version>
+			<groupId><%= @jdbc_maven_group_id %></groupId>
+			<artifactId><%= @jdbc_maven_artifact_id %></artifactId>
+			<version><%= @jdbc_maven_version %></version>
 		</dependency>
 	</dependencies>
 	<build>
@@ -77,7 +77,7 @@
 				<configuration>
 					<promptOnNonLocalDatabase>false</promptOnNonLocalDatabase>
 					<changeLogFile>${unpacked-liquibase-artifact-dir}/liquibase/changelog/changelog.xml</changeLogFile>
-					<driver>org.postgresql.Driver</driver>
+					<driver><%= @db_driver %></driver>
 					<url><%= @db_connection %></url>
 					<username><%= @db_username %></username>
 					<password><%= @db_password %></password>

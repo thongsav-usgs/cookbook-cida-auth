@@ -1,2 +1,2 @@
 # cookbook-cida-auth
-Assumes a postgres database for now.
+See environments folder for how to config chef environment.

@@ -57,6 +57,10 @@ template '/home/liquibase/pom.xml' do
 	variables(
 	:cida_auth_version => cida_auth_version,
 	:schema_name => schema_name,
+	:jdbc_maven_group_id => node["cida_auth"]["jdbc_maven_group_id"], 
+	:jdbc_maven_artifact_id => node["cida_auth"]["jdbc_maven_artifact_id"], 
+	:jdbc_maven_version => node["cida_auth"]["jdbc_maven_version"], 
+	:db_driver => node["cida_auth"]["jdbc_driver_class"], 
 	:db_connection => db_connection,
 	:db_username	=> username,
 	:db_password => pass
