@@ -98,6 +98,19 @@ node.default["wsi_tomcat"]["lib_sources"] = [{
 }]
 
 include_recipe "wsi_tomcat::default"
+
+#if we are using the oracle driver, we have to bring in the oracle jar
+jdbc_driver_class = node["cida_auth"]["jdbc_driver_class"]
+if jdbc_driver_class == "oracle.jdbc.OracleDriver"
+	# Bring in the needed ojdbc jar
+	tomcat_home_dir = node["wsi_tomcat"]["user"]["home_dir"]
+	tomcat_lib_dir = File.expand_path("lib", tomcat_home_dir)
+	ojdbc_jar = "ojdbc6.jar"
+	cookbook_file File.expand_path(ojdbc_jar, tomcat_lib_dir) do
+	  source ojdbc_jar
+	end
+end
+
 include_recipe "wsi_tomcat::deploy_application"
 include_recipe "wsi_tomcat::download_libs"
 include_recipe "wsi_tomcat::update_context"
