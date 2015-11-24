@@ -45,11 +45,19 @@
 			<type>jar</type>
 			<version><%= @cida_auth_version %></version>
 		</dependency>
+		<% if jdbc_driver_class == "oracle.jdbc.OracleDriver" %>
+		<dependency>
+			<groupId>localDependency</groupId>
+			<artifactId>ojdbc6</artifactId>
+			<version>ojdbc6</version>
+		</dependency>
+		<% else %>
 		<dependency>
 			<groupId><%= @jdbc_maven_group_id %></groupId>
 			<artifactId><%= @jdbc_maven_artifact_id %></artifactId>
 			<version><%= @jdbc_maven_version %></version>
 		</dependency>
+		<% end %>
 	</dependencies>
 	<build>
 		<plugins>

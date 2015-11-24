@@ -4,9 +4,9 @@
 		"cida_auth" : {
 			"cida_auth_version" : "1.1.1",
 			"schema_name" : "public",
+			"jdbc_driver_class" : "oracle.jdbc.OracleDriver",
 			"jdbc_driver_source" : "https://jdbc.postgresql.org/download/postgresql-9.4-1205.jdbc41.jar",
 			"jdbc_driver_filename" : "postgresql-9.4-1205.jdbc41.jar",
-			"jdbc_driver_class" : "org.postgresql.Driver",
 			"jdbc_maven_group_id" : "org.postgresql",
 			"jdbc_maven_artifact_id" : "postgresql",
 			"jdbc_maven_version" : "9.4-1205-jdbc41",

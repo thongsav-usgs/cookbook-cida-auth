@@ -34,6 +34,24 @@ directory '/home/liquibase' do
   action :create
 end
 
+
+#if we are using the oracle driver, we have to install the jar in the local mvn repo so the liquibase plugin can use it
+jdbc_driver_class = node["cida_auth"]["jdbc_driver_class"]
+if jdbc_driver_class == "oracle.jdbc.OracleDriver"
+	# Bring in the needed ojdbc jar
+	ojdbc_jar = "ojdbc6.jar"
+	cookbook_file File.expand_path(ojdbc_jar, "/home/liquibase") do
+		source ojdbc_jar
+	end
+	
+	bash "install_mvn_ojdbc" do
+		cwd "/home/liquibase"
+		code "mvn install:install-file -Dfile=#{ojdbc_jar} -DgroupId=localDependency -DartifactId=ojdbc6 -Dversion=ojdbc6 -Dpackaging=jar"
+		action :run
+	end
+end
+
+
 #decrypt username and password
 schema_name = node['cida_auth']['schema_name']
 data_bag_name = node['cida_auth']['credentials_data_bag_name']
@@ -60,7 +78,7 @@ template '/home/liquibase/pom.xml' do
 	:jdbc_maven_group_id => node["cida_auth"]["jdbc_maven_group_id"], 
 	:jdbc_maven_artifact_id => node["cida_auth"]["jdbc_maven_artifact_id"], 
 	:jdbc_maven_version => node["cida_auth"]["jdbc_maven_version"], 
-	:db_driver => node["cida_auth"]["jdbc_driver_class"], 
+	:db_driver => jdbc_driver_class, 
 	:db_connection => db_connection,
 	:db_username	=> username,
 	:db_password => pass

@@ -61,9 +61,6 @@ node.default["wsi_tomcat"]["instances"]["default"]["context"]["resources"] = [{
         }
 }]
 
-
-Chef::Log.info node["wsi_tomcat"]["instances"]["default"]["context"]["resources"]
-
 #all app components
 node.default["wsi_tomcat"]["instances"]["default"]["application"]["core"] = {
 	"url" => managerCore,
