@@ -1,5 +1,5 @@
 default["cida_auth"] = {
-	"cida_auth_version" => "1.1.0",
+	"cida_auth_version" => "1.1.1",
 	"schema_name" => "public",
 	"jdbc_driver_source" => "https://jdbc.postgresql.org/download/postgresql-9.4-1205.jdbc41.jar",
 	"jdbc_driver_filename" => "postgresql-9.4-1205.jdbc41.jar",
@@ -22,6 +22,8 @@ default["cida_auth"] = {
 		"development" => "true",
 		"auth.ldap.url" => "ldaps://host:3269",
 		"auth.ldap.domain" => "DC=gs,DC=doi,dc=net",
+		"auth.ldap.bind.user.prefix" => "",
+		"auth.ldap.bind.user.suffix" => "@gs.doi.net",
 		"auth.manager.password.algorithm" => "SHA1",
 		"auth.manager.core.rest.url" => "https://localhost=>8443/auth-manager-core/rest/",
 		"auth.manager.core.host" => "localhost",

@@ -18,6 +18,8 @@ node.default["wsi_tomcat"]["instances"]["default"]["context"]["environments"] = 
 	{ "name" => "development", "type" => "java.lang.String", "override" => true, "value" => node["cida_auth"]["tomcat"]["development"]},
 	{ "name" => "auth.ldap.url", "type" => "java.lang.String", "override" => true, "value" => node["cida_auth"]["tomcat"]["auth.ldap.url"]},
 	{ "name" => "auth.ldap.domain", "type" => "java.lang.String", "override" => true, "value" => node["cida_auth"]["tomcat"]["auth.ldap.domain"]},
+	{ "name" => "auth.ldap.bind.user.prefix", "type" => "java.lang.String", "override" => true, "value" => node["cida_auth"]["tomcat"]["auth.ldap.bind.user.prefix"]},
+	{ "name" => "auth.ldap.bind.user.suffix", "type" => "java.lang.String", "override" => true, "value" => node["cida_auth"]["tomcat"]["auth.ldap.bind.user.suffix"]},
 	{ "name" => "auth.manager.password.algorithm", "type" => "java.lang.String", "override" => true, "value" => node["cida_auth"]["tomcat"]["auth.manager.password.algorithm"]},
 	{ "name" => "auth.manager.core.rest.url", "type" => "java.lang.String", "override" => true, "value" => node["cida_auth"]["tomcat"]["auth.manager.core.rest.url"]},
 	{ "name" => "auth.manager.core.host", "type" => "java.lang.String", "override" => true, "value" => node["cida_auth"]["tomcat"]["auth.manager.core.host"]},
