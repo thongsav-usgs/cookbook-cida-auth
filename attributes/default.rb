@@ -1,6 +1,6 @@
 default["cida_auth"] = {
 	"cida_auth_version" => "1.1.1",
-	"schema_name" => "public",
+	"schema_name" => "cida_auth",
 	"jdbc_driver_class" => "oracle.jdbc.OracleDriver", #oracle driver overrides the download properties below
 	"jdbc_driver_source" => "https://jdbc.postgresql.org/download/postgresql-9.4-1205.jdbc41.jar",
 	"jdbc_driver_filename" => "postgresql-9.4-1205.jdbc41.jar",

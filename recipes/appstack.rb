@@ -50,7 +50,7 @@ node.default["wsi_tomcat"]["instances"]["default"]["context"]["resources"] = [{
         "remove_abandoned" => "true",
         "remove_abandoned_timeout" => "60",
         "log_abandoned" => "true",
-        "validation_query" => "select version()",
+        "validation_query" => "select * from dual",
         "encrypted_attributes" => {
         	"data_bag_name" => node["cida_auth"]["credentials_data_bag_name"],
         	"key_location" => node["cida_auth"]["data_bag_encryption_key"],
@@ -111,9 +111,9 @@ if jdbc_driver_class == "oracle.jdbc.OracleDriver"
 	end
 end
 
-include_recipe "wsi_tomcat::deploy_application"
 include_recipe "wsi_tomcat::download_libs"
 include_recipe "wsi_tomcat::update_context"
+include_recipe "wsi_tomcat::deploy_application"
 
 include_recipe "iptables::default"
 

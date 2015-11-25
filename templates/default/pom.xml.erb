@@ -45,7 +45,7 @@
 			<type>jar</type>
 			<version><%= @cida_auth_version %></version>
 		</dependency>
-		<% if jdbc_driver_class == "oracle.jdbc.OracleDriver" %>
+		<% if @db_driver == "oracle.jdbc.OracleDriver" %>
 		<dependency>
 			<groupId>localDependency</groupId>
 			<artifactId>ojdbc6</artifactId>

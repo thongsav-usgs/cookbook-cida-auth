@@ -3,14 +3,14 @@
 	"override_attributes": {
 		"cida_auth" : {
 			"cida_auth_version" : "1.1.1",
-			"schema_name" : "public",
+			"schema_name" : "cida_auth",
 			"jdbc_driver_class" : "oracle.jdbc.OracleDriver",
 			"jdbc_driver_source" : "https://jdbc.postgresql.org/download/postgresql-9.4-1205.jdbc41.jar",
 			"jdbc_driver_filename" : "postgresql-9.4-1205.jdbc41.jar",
 			"jdbc_maven_group_id" : "org.postgresql",
 			"jdbc_maven_artifact_id" : "postgresql",
 			"jdbc_maven_version" : "9.4-1205-jdbc41",
-			"db_connection" : "jdbc:postgresql://host:5432/postgres",
+			"db_connection" : "jdbc:oracle:thin:@HOST:1521:cidaauth",
 			"credentials_data_bag_name" : "example_credentials_data_bag",
 			"data_bag_encryption_key" : "/etc/chef/data-bag-encryption-key",
 			"data_bag_username_field" : "database.username",
