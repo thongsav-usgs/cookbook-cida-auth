@@ -2,7 +2,7 @@
 	"name": "cida_auth",
 	"override_attributes": {
 		"cida_auth" : {
-			"cida_auth_version" : "1.1.1",
+			"cida_auth_version" : "1.1.3",
 			"schema_name" : "cida_auth",
 			"jdbc_driver_class" : "oracle.jdbc.OracleDriver",
 			"jdbc_driver_source" : "https://jdbc.postgresql.org/download/postgresql-9.4-1205.jdbc41.jar",
@@ -16,11 +16,11 @@
 			"data_bag_username_field" : "database.username",
 			"data_bag_password_field" : "database.password",
 			"tomcat" : {
-				"manager.core.source.war" : "http://cida.usgs.gov/maven/cida-public-releases/gov/usgs/cida/auth/auth-manager-core/1.1.1/auth-manager-core-1.1.1.war",
+				"manager.core.source.war" : "http://cida.usgs.gov/maven/cida-public-releases/gov/usgs/cida/auth/auth-manager-core/1.1.1/auth-manager-core-1.0.3.war",
 				"manager.core.final.name" : "auth-manager-core",
-				"manager.source.war": "http://cida.usgs.gov/maven/cida-public-releases/gov/usgs/cida/auth/auth-manager-console/1.1.1/auth-manager-console-1.1.1.war",
+				"manager.source.war": "http://cida.usgs.gov/maven/cida-public-releases/gov/usgs/cida/auth/auth-manager-console/1.1.1/auth-manager-console-1.0.3.war",
 				"manager.final.name" : "auth-manager-console",
-				"cida.auth.source.war" : "http://cida.usgs.gov/maven/cida-public-releases/gov/usgs/cida/auth/auth-webservice/1.1.1/auth-webservice-1.1.1.war",
+				"cida.auth.source.war" : "http://cida.usgs.gov/maven/cida-public-releases/gov/usgs/cida/auth/auth-webservice/1.1.1/auth-webservice-1.1.3.war",
 				"cida.auth.final.name" : "auth-webservice",
 				"development" : "true",
 				"auth.ldap.url" : "ldaps://host",
