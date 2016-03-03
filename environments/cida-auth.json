@@ -1,7 +1,7 @@
 {
-	"name": "cida_auth",
+	"name": "cida-auth",
 	"override_attributes": {
-		"cida_auth" : {
+		"cida-auth" : {
 			"cida_auth_version" : "1.1.3",
 			"schema_name" : "cida_auth",
 			"jdbc_driver_class" : "oracle.jdbc.OracleDriver",
@@ -11,7 +11,7 @@
 			"jdbc_maven_artifact_id" : "postgresql",
 			"jdbc_maven_version" : "9.4-1205-jdbc41",
 			"db_connection" : "jdbc:oracle:thin:@HOST:1521:cidaauth",
-			"credentials_data_bag_name" : "example_credentials_data_bag",
+			"credentials_data_bag_name" : "cida-auth-credentials-data-bag",
 			"data_bag_encryption_key" : "/etc/chef/data-bag-encryption-key",
 			"data_bag_username_field" : "database.username",
 			"data_bag_password_field" : "database.password",
@@ -32,13 +32,15 @@
 				"auth.manager.core.host" : "localhost",
 				"auth.manager.core.port" : "8443",
 				"auth.manager.core.scheme" : "https",
+				"auth.oauth.required.domain" : "usgs.gov",
+				"auth.oauth.endpoint" : "https://accounts.google.com/o/oauth2/v2/auth",
 				"encrypted_environments_data_bag" : {
-					"data_bag_name" : "example_credentials_data_bag",
+					"data_bag_name" : "cida-auth-credentials-data-bag",
 					"key_location" : "/etc/chef/data-bag-encryption-key",
-					"extract_fields" : ["auth.manager.username", "auth.manager.password"]
+					"extract_fields" : ["auth.manager.username", "auth.manager.password", "auth.oauth.client.id", "auth.oath.client.secret"]
 				},
 				"wsi_tomcat_keys_config" : {
-					"data_bag_name" : "example_wsi_tomcat_keystore_data_bag",
+					"data_bag_name" : "cida-auth-keystore-data-bag",
 					"key_location" : "/etc/chef/data-bag-encryption-key"
 				}
 			}
