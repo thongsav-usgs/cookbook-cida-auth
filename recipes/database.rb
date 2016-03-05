@@ -55,11 +55,12 @@ end
 #decrypt username and password
 schema_name = node['cida-auth']['schema_name']
 data_bag_name = node['cida-auth']['credentials_data_bag_name']
+data_bag_item = node['cida-auth']['credentials_data_bag_item']
 encryption_key_path = node['cida-auth']['data_bag_encryption_key']
 data_bag_username_field = node['cida-auth']['data_bag_username_field']
 data_bag_password_field = node['cida-auth']['data_bag_password_field']
 
-credential_data_bag = data_bag_item(data_bag_name, data_bag_name, IO.read(encryption_key_path))
+credential_data_bag = data_bag_item(data_bag_name, data_bag_item, IO.read(encryption_key_path))
 username = credential_data_bag[data_bag_username_field]
 pass = credential_data_bag[data_bag_password_field]
 

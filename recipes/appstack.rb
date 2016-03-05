@@ -53,6 +53,7 @@ node.default["wsi_tomcat"]["instances"]["default"]["context"]["resources"] = [{
         "validation_query" => "select * from dual",
         "encrypted_attributes" => {
         	"data_bag_name" => node["cida-auth"]["credentials_data_bag_name"],
+        	"data_bag_item" => node["cida-auth"]["credentials_data_bag_item"],
         	"key_location" => node["cida-auth"]["data_bag_encryption_key"],
         	"field_map" => {
         		"#{username_key}" => "username",
@@ -83,6 +84,7 @@ node.default["wsi_tomcat"]["instances"]["default"]["service_definitions"] = [{
   "ssl_connector" => { 
     "enabled" => true,
     "wsi_tomcat_keys_data_bag" => node["cida-auth"]["tomcat"]["wsi_tomcat_keys_config"]["data_bag_name"],
+    "wsi_tomcat_keys_data_item" => node["cida-auth"]["tomcat"]["wsi_tomcat_keys_config"]["data_bag_item"],
     "key_location" => node["cida-auth"]["tomcat"]["wsi_tomcat_keys_config"]["key_location"], # note: this feature relies on an encryption key being placed on the system before this recipe runs
   },
   "engine" => { "host" => [ "name" => "localhost" ] }

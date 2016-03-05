@@ -8,7 +8,8 @@ default["cida-auth"] = {
 	"jdbc_maven_artifact_id" => "postgresql",
 	"jdbc_maven_version" => "9.4-1205-jdbc41",
 	"db_connection" => "jdbc:oracle:thin:@HOST:1521:cidaauth",
-	"credentials_data_bag_name" => "cida-auth-credentials-data-bag",
+	"credentials_data_bag_name" => "credentials-data-bag",
+	"credentials_data_bag_item" => "credentials",
 	"data_bag_encryption_key" => "/etc/chef/data-bag-encryption-key",
 	"data_bag_username_field" => "database.username",
 	"data_bag_password_field" => "database.password",
@@ -32,12 +33,14 @@ default["cida-auth"] = {
 		"auth.oauth.required.domain" => "usgs.gov",
 		"auth.oauth.endpoint" => "https://accounts.google.com/o/oauth2/v2/auth",
 		"encrypted_environments_data_bag" => {
-			"data_bag_name" => "cida-auth-credentials-data-bag",
+			"data_bag_name" => "credentials-data-bag",
+			"data_bag_item" => "credentials",
 			"key_location" => "/etc/chef/data-bag-encryption-key",
 			"extract_fields" => ["auth.manager.username", "auth.manager.password", "auth.oauth.client.id", "auth.oath.client.secret"]
 		},
 		"wsi_tomcat_keys_config" => {
-			"data_bag_name" => "cida-auth-keystore-databag",
+			"data_bag_name" => "keystore-data-bag",
+			"data_bag_item" => "keystore-config",
 			"key_location" => "/etc/chef/data-bag-encryption-key"
 		}
 	}
