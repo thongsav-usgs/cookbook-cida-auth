@@ -1,0 +1,21 @@
+---
+driver:
+  name: vagrant
+
+provisioner:
+  name: chef_solo
+  data_bags_path: 'test/integration/default/data_bags/'
+  environments_path: 'test/integration/default/environments'
+  solo_rb:
+    environment: local-cida-auth-dev
+
+platforms:
+  - name: centos-6.6
+
+suites:
+  - name: default
+    data_bags_path: 'test/integration/default/data_bags/'
+    encrypted_data_bag_secret_key_path: 'test/integration/default/encrypted_data_bag_secret'
+    run_list:
+      - recipe[cida-auth::appstack]
+    attributes:
